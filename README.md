@@ -79,9 +79,13 @@ environment with Python 3.6, you can install one via [Miniconda3](https://conda.
   # Install the combined PyTorch+Caffe2 conda package.
   conda install -y -c caffe2 "pytorch-caffe2-cuda${TMP_CUDA_VERSION}.0-cudnn7"
   # Force re-install of numpy 1.14 since the current version of the
-  # PyTorch+Caffe2 package downgrades it.
-  conda install -y numpy==1.14 --no-deps
+  # PyTorch+Caffe2 package downgrades it and python.
 
+  conda install -y numpy==1.14 --no-deps
+  conda install python==3.6
+  # protobuf for caffe2 should not be higher than 3.5
+  conda install protobuf==3.5
+  
   # Install NCCL2.
   wget "https://s3.amazonaws.com/pytorch/nccl_2.1.15-1%2Bcuda${TMP_CUDA_VERSION}.0_x86_64.txz"
   TMP_NCCL_VERSION="nccl_2.1.15-1+cuda${TMP_CUDA_VERSION}.0_x86_64"
